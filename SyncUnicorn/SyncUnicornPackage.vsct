@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Commands package="guidSyncUnicornPackage">
+    <Buttons>
+      <Button guid="guidSyncUnicornPackageCmdSet" id="SyncUnicornCommandId" priority="0x0600" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_BUILD_SELECTION" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="guidImages" id="syncIcon"/>
+        <Strings>
+          <ButtonText>Sync Unicorn</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidSyncUnicornPackageCmdSet" id="SyncUnicornCommandId" priority="0x0600" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_BUILD" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="guidImages" id="syncIcon"/>
+        <Strings>
+          <ButtonText>Sync Unicorn</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\Sync.png" usedList="syncIcon" />
+    </Bitmaps>
+  </Commands>
+  <Symbols>
+    <GuidSymbol name="guidSyncUnicornPackage" value="{37804fd6-db33-4e56-b4b0-3dc557baabd2}" />
+    <GuidSymbol name="guidSyncUnicornPackageCmdSet" value="{96b503c1-aebd-44ec-b134-f3eb1a5e037e}">
+      <IDSymbol name="SyncUnicornCommandId" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{569b99b5-1567-4550-a54a-162e6e1e86a7}">
+      <IDSymbol name="syncIcon" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
