@@ -19,6 +19,8 @@ namespace SyncUnicorn
                 {
                     _loggingActive = true;
 
+                    LoggerAsync.ActivatePane();
+
                     LoggerAsync.Log("========== SyncUnicorn started ==========");
                 }
             };

@@ -21,6 +21,21 @@ namespace SyncUnicorn
             _output = await _provider.GetServiceAsync(typeof(SVsOutputWindow)) as IVsOutputWindow;
         }
 
+        public static void ActivatePane()
+        {
+            try
+            {
+                if (EnsurePane())
+                {
+                    _pane.Activate();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex);
+            }
+        }
+
         public static void Log(string message)
         {
             if (string.IsNullOrEmpty(message))

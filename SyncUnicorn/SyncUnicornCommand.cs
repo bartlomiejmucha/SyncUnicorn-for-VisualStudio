@@ -41,7 +41,7 @@ namespace SyncUnicorn
                             menuCommand.Visible = ProjectCollection.GlobalProjectCollection.LoadedProjects.Any(x =>
                             {
                                 ThreadHelper.ThrowIfNotOnUIThread();
-                                return x.FullPath.Equals(activeProject.FullName) && x.Targets.ContainsKey("SyncUnicorn");
+                                return x.FullPath.Equals(activeProject.FullName) && x.Targets.ContainsKey("SyncUnicorn") && !VsShellUtilities.IsSolutionBuilding(package);
                             });
                         }
                     }
@@ -79,8 +79,7 @@ namespace SyncUnicorn
 
             if (Package.GetGlobalService(typeof(SDTE)) is DTE dte && (dte.ActiveSolutionProjects is Array projects && projects.Length > 0))
             {
-                var activeProject = projects.GetValue(0) as Project;
-                if (activeProject != null)
+                if (projects.GetValue(0) is Project activeProject)
                 {
                     var parameters = CreateBuildParameters();
                     var data = CreateBuildRequestData(activeProject, "SyncUnicorn", dte);
@@ -107,7 +106,7 @@ namespace SyncUnicorn
             return buildParameters;
         }
 
-        private BuildRequestData CreateBuildRequestData(Project proj, string target, _DTE dte)
+        private BuildRequestData CreateBuildRequestData(Project proj, string target, DTE dte)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
